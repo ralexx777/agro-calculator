@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: agro-calculator
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /healthz
+    autoDeploy: true

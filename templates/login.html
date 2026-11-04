@@ -1,0 +1,25 @@
+<section class="auth">
+  <div class="auth-card">
+    <h1>Вход в кабинет</h1>
+    <p class="muted">Доступ к агро-калькулятору посевных</p>
+
+    {{error}}
+
+    <form method="post" action="/login" class="form">
+      <label>
+        <span>Электронная почта</span>
+        <input type="email" name="email" value="{{email}}" placeholder="you@example.ru"
+               autocomplete="email" required>
+      </label>
+      <label>
+        <span>Пароль</span>
+        <input type="password" name="password" placeholder="Минимум 8 символов"
+               autocomplete="current-password" required>
+      </label>
+      <button class="btn btn-wide" type="submit">Войти</button>
+    </form>
+
+    <p class="switch">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+    <p class="hint">Демо-доступ: <b>demo@agro.ru</b> / <b>demo12345</b></p>
+  </div>
+</section>

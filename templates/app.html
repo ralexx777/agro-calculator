@@ -1,0 +1,92 @@
+<section class="cabinet">
+  <header class="cabinet-head">
+    <div>
+      <p class="eyebrow">Личный кабинет</p>
+      <h1>Агро-калькулятор посевных</h1>
+      <p class="muted">Вы вошли как <b>{{email}}</b></p>
+    </div>
+  </header>
+
+  <div class="calc-grid">
+    <form class="card calc" id="calc" autocomplete="off">
+      <h2>Исходные данные</h2>
+
+      <label class="field">
+        <span>Культура</span>
+        <select id="culture" name="culture"></select>
+      </label>
+
+      <div class="row2">
+        <label class="field">
+          <span>Площадь, га</span>
+          <input id="area" type="number" value="100" min="0.1" step="0.1" inputmode="decimal">
+        </label>
+        <label class="field">
+          <span>Норма высева, млн/га</span>
+          <input id="density" type="number" step="0.01" min="0.01" inputmode="decimal">
+        </label>
+      </div>
+
+      <div class="row2">
+        <label class="field">
+          <span>Масса 1000 семян, г</span>
+          <input id="m1000" type="number" step="0.1" min="0.1" inputmode="decimal">
+        </label>
+        <label class="field">
+          <span>Цена семян, ₽/кг</span>
+          <input id="price" type="number" step="0.5" min="0" value="90" inputmode="decimal">
+        </label>
+      </div>
+
+      <div class="row2">
+        <label class="field">
+          <span>Всхожесть, %</span>
+          <input id="germination" type="number" step="0.1" min="1" max="100" value="95" inputmode="decimal">
+        </label>
+        <label class="field">
+          <span>Чистота, %</span>
+          <input id="purity" type="number" step="0.1" min="1" max="100" value="99" inputmode="decimal">
+        </label>
+      </div>
+
+      <p class="formula">
+        Норма высева = норма (млн/га) × масса 1000 семян (г) × 100 / посевная годность.
+        Посевная годность = всхожесть × чистота / 100.
+      </p>
+    </form>
+
+    <aside class="card results">
+      <h2>Результат</h2>
+
+      <div class="big">
+        <span id="r-rate">—</span>
+        <small>кг/га</small>
+      </div>
+
+      <dl class="res-list">
+        <div><dt>Посевная годность</dt><dd id="r-pg">—</dd></div>
+        <div><dt>Семян на гектар</dt><dd id="r-seeds">—</dd></div>
+        <div><dt>Всего семян</dt><dd id="r-total">—</dd></div>
+        <div><dt>В тоннах</dt><dd id="r-tons">—</dd></div>
+        <div><dt>Стоимость всего</dt><dd id="r-cost" class="accent">—</dd></div>
+        <div><dt>Стоимость на гектар</dt><dd id="r-per-ha">—</dd></div>
+      </dl>
+
+      <button class="btn btn-wide" id="save" type="button">Сохранить расчёт</button>
+      <p class="hint" id="save-note"></p>
+    </aside>
+  </div>
+
+  <section class="card history-card">
+    <div class="history-head">
+      <h2>История расчётов</h2>
+      <span class="muted">последние 20</span>
+    </div>
+    {{history}}
+  </section>
+</section>
+
+<script>
+  window.CROPS = {{crops_json}};
+  window.CSRF = "{{csrf}}";
+</script>

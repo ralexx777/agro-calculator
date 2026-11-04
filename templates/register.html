@@ -1,0 +1,29 @@
+<section class="auth">
+  <div class="auth-card">
+    <h1>Создать аккаунт</h1>
+    <p class="muted">Бесплатный доступ к агро-калькулятору</p>
+
+    {{error}}
+
+    <form method="post" action="/register" class="form">
+      <label>
+        <span>Электронная почта</span>
+        <input type="email" name="email" value="{{email}}" placeholder="you@example.ru"
+               autocomplete="email" required>
+      </label>
+      <label>
+        <span>Пароль</span>
+        <input type="password" name="password" placeholder="Минимум 8 символов"
+               autocomplete="new-password" minlength="8" required>
+      </label>
+      <label>
+        <span>Повторите пароль</span>
+        <input type="password" name="confirm" placeholder="Ещё раз"
+               autocomplete="new-password" minlength="8" required>
+      </label>
+      <button class="btn btn-wide" type="submit">Зарегистрироваться</button>
+    </form>
+
+    <p class="switch">Уже есть аккаунт? <a href="/login">Войти</a></p>
+  </div>
+</section>
